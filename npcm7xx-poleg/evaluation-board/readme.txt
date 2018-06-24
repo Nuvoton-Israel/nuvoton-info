@@ -75,19 +75,22 @@ Eval_Board
 |   |       uboot_env_parameters.txt - uboot environment that will load this image
 |   |
 |   \---npcm7xx_v2.1 - built images of Nuvoton OpenBMC
-|   |       image-bmc    - The entire 32MB image including BootBlock, u-boot, linux kernel
-|   |                      and file system, can be programmed into the beginning of flash
-|   |       image-u-boot - Includes only BootBlock and u-boot and their headers can be
-|   |                      programmed into the beginning of flash
-|   |       image-kernel - FIT image that includes linux kernel, device tree and an
-|   |                      initial file system, can be loaded to the linux area in flash
-|   |       image-rofs   - Main (and large) OpenBMC file system, can be loaded to the
-|   |                      rofs area in flash
-|   |       uboot_env_parameters.txt - uboot environment that will load this image
+|           image-bmc    - The entire 32MB image including BootBlock, u-boot, linux kernel
+|                          and file system, can be programmed into the beginning of flash
+|           image-u-boot - Includes only BootBlock and u-boot and their headers can be
+|                          programmed into the beginning of flash
+|           image-kernel - FIT image that includes linux kernel, device tree and an
+|                          initial file system, can be loaded to the linux area in flash
+|           image-rofs   - Main (and large) OpenBMC file system, can be loaded to the
+|                          rofs area in flash
+|           uboot_env_parameters.txt - uboot environment that will load this image
 |
-\---board_deliverables
-        NPCM750x_EVB_Quick_Setup_Guide.pdf  - How to work with the EB 
-        NPCM750x_EB_ver.A1.1_COMPLETE.pdf   - EVB schematics
+|---board_deliverables
+|       NPCM750x_EVB_Quick_Setup_Guide.pdf  - How to work with the EB 
+|       NPCM750x_EB_ver.A1.1_COMPLETE.pdf   - EVB schematics
+|
+\---Graphics
+        Poleg_Graphics_Drivers_3.0.zip - Graphic drivers for BIOS, UEFI, Windows and linux
 
 ----------------------------
 For any help please contact:
