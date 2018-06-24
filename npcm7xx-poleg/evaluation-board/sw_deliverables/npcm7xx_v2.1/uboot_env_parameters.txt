@@ -1,0 +1,65 @@
+env default -a
+
+echo Set the MAC address as printed on your board
+echo ============================================
+setenv mac_offset 01DC
+
+setenv mac_base 00:00:F7:A0
+setexpr byte ${mac_offset} / 100;setexpr nibh ${byte} / 10;setexpr nibl ${byte} % 10;setenv mac_base ${mac_base}:${nibh}${nibl}
+setexpr byte ${mac_offset} % 100;setexpr nibh ${byte} / 10
+setexpr nibl ${byte} % 10;setenv ethaddr ${mac_base}:${nibh}${nibl}
+setexpr nibl ${nibl} + 1;setenv eth1addr ${mac_base}:${nibh}${nibl}
+setexpr nibl ${nibl} + 1;setenv eth2addr ${mac_base}:${nibh}${nibl}
+setexpr nibl ${nibl} + 1;setenv eth3addr ${mac_base}:${nibh}${nibl}
+setenv byte; setenv nibh; setenv nibl; setenv mac_base; setenv mac_offset
+
+echo Those setting are according to your specific network parameters
+echo ===============================================================
+setenv gatewayip            10.0.0.254
+setenv nfspath              10.191.1.198:/home/ubuntu/shared/nfs
+setenv serverip             10.0.0.2
+setenv ipaddr               10.0.0.1
+setenv netmask              255.255.255.0
+
+echo choose either dhcp_on or dhcp_off by prefex 'echo' before the undesired option
+echo ==============================================================================
+echo setenv dhcp_cmd dhcp
+setenv dhcp_cmd
+
+echo Update the images names and path if needed
+echo ===========================================
+setenv tftp_dir Training/ftp_mirror/Eval_Board/sw_deliverables/npcm7xx_v2.2
+
+
+echo Select the network device for uboot: 0: RMII1, 1: RMII2, 2: RGMII1, 3: RGMII2
+echo =============================================================================
+setenv eth_num 2
+
+echo Those settings are usefull for booting Poleg linux
+echo ==================================================
+setenv autoload  no
+setenv autostart no
+setenv baudrate 115200
+setenv bootcmd 'run romboot'
+setenv bootdelay 2
+setenv common_bootargs 'setenv bootargs earlycon=${earlycon} root=/dev/ram0 console=${console} mem=${mem} ramdisk_size=48000'
+setenv console 'ttyS0,115200n8'
+setenv earlycon 'uart8250,mmio32,0xf0001000
+setenv mem 976M
+setenv nfsboot 'setenv ethact ETH${eth_num};${dhcp_cmd};run common_bootargs;setenv bootargs ${bootargs} root=/dev/nfs init=/sbin/init nfsroot=${nfspath};tftp 10000000 ${tftp_dir}/image-bmc; bootm 10200000'
+setenv romboot 'run common_bootargs; echo Booting Kernel from flash; echo +++ uimage at 0x${uimage_flash_addr}; echo Using bootargs: ${bootargs};bootm ${uimage_flash_addr}'
+setenv stderr serial
+setenv stdin serial
+setenv stdout serial
+setenv uimage_flash_addr 80200000
+
+setenv ftp_prog 'setenv ethact ETH${eth_num}; ${dhcp_cmd}; tftp 10000000 ${tftp_dir}/image-bmc; cp.b 10000000 80000000 ${filesize}; saveenv'
+setenv ftp_run  'setenv ethact ETH${eth_num}; ${dhcp_cmd}; tftp 10000000 ${tftp_dir}/image-bmc; run common_bootargs; bootm 10200000'
+setenv sd_prog  'fatload mmc 0 10000000 image-bmc; cp.b 10000000 80000000 ${filesize}; saveenv'
+setenv sd_run   'fatload mmc 0 10000000 image-bmc; run common_bootargs; bootm 10200000'
+setenv usb_prog 'usb start; fatload usb 0 10000000 image-bmc; cp.b 10000000 80000000 ${filesize}; saveenv'
+setenv usb_run  'usb start; fatload usb 0 10000000 image-bmc; run common_bootargs; bootm 10200000'
+
+setenv ftp_uboot  'setenv ethact ETH${eth_num}; ${dhcp_cmd}; tftp 10000000 ${tftp_dir}/image-u-boot; cp.b 10000000 80000000 ${filesize}'
+
+saveenv

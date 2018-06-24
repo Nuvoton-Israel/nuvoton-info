@@ -59,12 +59,25 @@ Eval_Board
 |   |   uboot_env_parameters.txt - uboot environment that will load and run the OpenBMC_linux_X.X.X
 |   |   linux_peripheral_testings.sh - shell script with examples for reading / writing to peripherals
 |   |
-|   \---Image_Generation_and_Programming
-|           Image_Generation_and_Programming_1.8.9.zip - tools to program the BootBlock and u-boot
-|                                                        described in EVB_BootBlock_U-Boot_Linux.pdf
+|   |---Image_Generation_and_Programming
+|   |       Image_Generation_and_Programming_1.8.9.zip - tools to program the BootBlock and u-boot
+|   |                                                    described in EVB_BootBlock_U-Boot_Linux.pdf
+|   |
+|   |---npcm7xx_v2.2
+|   |       image-u-boot
+|   |       image-bmc
+|   |       image-kernel
+|   |       image-rofs
+|   |
+|   \---npcm7xx_v2.1
+|           image-u-boot
+|           image-bmc
+|           image-kernel
+|           image-rofs
 |
 \---board_deliverables
         NPCM750x_EVB_Quick_Setup_Guide.pdf  - How to work with the EB 
+        NPCM750x_EB_ver.A1.1_COMPLETE.pdf   - EVB schematics
 
 ----------------------------
 For any help please contact:
