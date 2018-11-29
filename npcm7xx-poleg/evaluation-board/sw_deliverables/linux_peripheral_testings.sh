@@ -17,7 +17,7 @@ echo 100 > /sys/class/hwmon/hwmon2/pwm7
 echo 100 > /sys/class/hwmon/hwmon2/pwm8
 
 # FAN3 is called by SW fan4_input on FAN3 pin 3
-cat /sys/class/hwmon/hwmon3/fan*_input
+cat /sys/class/hwmon/hwmon2/fan*_input
 
 # GPIO 146 is the green LED (muxed with PWM6)
 # GPIO 147 is the red   LED (muxed with PWM7)
