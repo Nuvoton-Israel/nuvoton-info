@@ -18,17 +18,20 @@ Building instructions:
 	Then:
 		. openbmc-env
 		bitbake obmc-phosphor-image
-	
+
 
 Folder CONTENTS
 ===============
 RunBMC
 |   readme.txt - this readme file with building instructions
 |
-\---board_deliverables
-        RunBMC_Microcontroller_Implementation_Guide_1.0.pdf
-        RunBMC_NPCM7mnx_BOM_A.1.0.xlsx       - BOM
-        RunBMC_NPCM7mnx_schematics_A.1.0.pdf - schematics
++---board_deliverables
+|       RunBMC_Microcontroller_Implementation_Guide_1.0.pdf
+|       RunBMC_NPCM7mnx_BOM_A.1.0.xlsx       - BOM
+|       RunBMC_NPCM7mnx_schematics_A.1.0.pdf - schematics
+|
+\---OCP_Specification
+        OCP_RunBMC_Daughterboard_Card_Design_Specification_v1.pdf
 
 ----------------------------
 For any help please contact:
